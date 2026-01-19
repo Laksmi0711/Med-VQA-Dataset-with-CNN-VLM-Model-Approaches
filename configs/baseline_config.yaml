@@ -1,0 +1,32 @@
+# Baseline CNN-LSTM Configuration
+
+model:
+  name: "CNN-LSTM"
+  visual_encoder: "resnet50"
+  text_encoder: "bilstm"
+  embedding_dim: 768
+  hidden_dim: 512
+  num_lstm_layers: 2
+  dropout: 0.5
+
+training:
+  batch_size: 32
+  epochs: 50
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+  early_stopping_patience: 10
+  lr_scheduler: "ReduceLROnPlateau"
+  lr_patience: 5
+  lr_factor: 0.5
+
+data:
+  image_size: 224
+  max_seq_length: 20
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+
+paths:
+  data_dir: "data/processed/splits"
+  images_dir: "data/raw/images"
+  output_dir: "results/baseline"

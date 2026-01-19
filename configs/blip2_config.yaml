@@ -1,0 +1,36 @@
+# BLIP-2 VLM Configuration
+
+model:
+  name: "BLIP-2"
+  pretrained_model: "Salesforce/blip2-opt-2.7b"
+  use_lora: true
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  target_modules: ["q_proj", "v_proj"]
+
+training:
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  epochs: 15
+  learning_rate: 2e-5
+  weight_decay: 1e-5
+  warmup_steps: 500
+  early_stopping_patience: 5
+  mixed_precision: true
+
+generation:
+  max_length: 50
+  num_beams: 3
+  early_stopping: true
+
+data:
+  image_size: 384
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+
+paths:
+  data_dir: "data/processed/splits"
+  images_dir: "data/raw/images"
+  output_dir: "results/blip2"
