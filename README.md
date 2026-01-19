@@ -283,7 +283,7 @@ python evaluation/visualize.py \
 Run all experiments with default configurations:
 
 ```bash
-bash scripts/run_experiments.sh
+bash scripts/setup.sh
 ```
 
 This will:
